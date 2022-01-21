@@ -1,0 +1,4 @@
+title_format = "Gamestonk Terminal"
+preferences {
+    font_family = "'Consolas', monospace"
+}
