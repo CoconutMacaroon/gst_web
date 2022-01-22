@@ -22,7 +22,6 @@ RUN printf '#!/bin/sh\npython3 /GamestonkTerminal/terminal.py\n' > /bin/run && c
 
 # Put our custom index.html and .gotty into the root directory of the container
 COPY index.html /index.html
-COPY .gotty /.gotty
 
 # I've built this version of gotty myself
 # It uses the sources from here https://github.com/sorenisanerd/gotty
