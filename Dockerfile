@@ -17,12 +17,6 @@ WORKDIR /GamestonkTerminal
 # Download its dependicies using pip
 RUN pip install -r requirements.txt && pip cache purge
 
-# Download the gotty tar file, extract the binary, put the binary in /bin, and remove the tar file
-RUN wget https://github.com/sorenisanerd/gotty/releases/download/v1.3.0/gotty_v1.3.0_linux_amd64.tar.gz &&\
-    tar xf gotty_v1.3.0_linux_amd64.tar.gz &&\
-    mv gotty /bin/gotty &&\
-    rm gotty_v1.3.0_linux_amd64.tar.gz
-
 # Create a little script to start the GamestonkTerminal
 RUN printf '#!/bin/sh\npython3 /GamestonkTerminal/terminal.py\n' > /bin/run && chmod +x /bin/run
 
@@ -30,5 +24,11 @@ RUN printf '#!/bin/sh\npython3 /GamestonkTerminal/terminal.py\n' > /bin/run && c
 COPY index.html /index.html
 COPY .gotty /.gotty
 
+# I've built this version of gotty myself
+# It uses the sources from here https://github.com/sorenisanerd/gotty
+# Except the one difference is that font is hard-coded in
+COPY gotty /bin/gotty
+RUN chmod +x /bin/gotty
+
 # And launch the script when we run the container
-ENTRYPOINT gotty --config "/.gotty" --term hterm --permit-write run
+ENTRYPOINT gotty --index '/index.html' --term xterm --title-format 'Gamestonk Terminal Web' --permit-write run
