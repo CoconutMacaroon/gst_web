@@ -1,3 +1,5 @@
+> **THIS WAS MERGED INTO THE MAIN Gamestonk Terminal REPO. SEE [TIHS PULL REQUEST](https://github.com/GamestonkTerminal/GamestonkTerminal/pull/1251). THIS REPO IS BEING ARCHIVED AS A RESULT**
+
 # Gamestonk Terminal Web
 
 > Warning: It works, but a few things are still broken like graphs. See the TODO section for what works and what doesn't.
